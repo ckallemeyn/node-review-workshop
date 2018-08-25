@@ -1,0 +1,10 @@
+import React from 'react';
+
+const ListEntry = props => {
+  <div>
+    <button onClick={() => props.deleteTodo(props.todo.name)} />
+    {props.todo.name}
+  </div>;
+};
+
+export default ListEntry;
