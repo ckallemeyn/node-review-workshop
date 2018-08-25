@@ -1,5 +1,10 @@
 # node-review-workshop
 
+#Start Server <br />
+npm install <br />
+npm run build <br />
+npm start <br />
+
 #Exercise-1 <br />
 Build out the GET, POST, and DELETE functions in handler.js in the node-server folder
 

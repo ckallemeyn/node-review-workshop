@@ -18,7 +18,7 @@ module.exports = {
   },
   delete: (req, res) => {
     const { index, listName } = req.query;
-    list[listName].splice(+index, 1);
+    list[listName].splice(index, 1);
     res.status(202).send(list[listName]);
   }
 };
