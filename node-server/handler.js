@@ -2,6 +2,7 @@ const url = require('url');
 const fs = require('fs');
 const path = require('path');
 
+//Make sure to never do this outside of this exercise
 const list = {
   Todos: []
 };
