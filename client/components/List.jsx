@@ -40,9 +40,11 @@ class List extends Component {
     e.target.reset();
   }
 
-  deleteTodo(todo) {
+  deleteTodo(index) {
     axios
-      .delete('/api/todoList', { params: { todo } })
+      .delete('/api/todoList', {
+        params: { index, listName: this.state.listName }
+      })
       .then(this.fetchTodos())
       .catch(err => console.log(err));
   }

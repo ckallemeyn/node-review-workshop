@@ -43,13 +43,28 @@ const routes = {
   },
   '/api/todoList': {
     GET: (req, res) => {
-      console.log('In GET');
+      const query = url.parse(req.url, true).query;
+      const { listName } = query;
+      if (listName in list) {
+        sendResponse(res, list[listName], 200);
+      } else {
+        sendResponse(res, 'List not Found', 404);
+      }
     },
     POST: (req, res) => {
-      console.log('In POST');
+      parseData(req, data => {
+        console.log(data);
+        const { todo, listName } = data;
+        list[listName].push(todo);
+        console.log(list);
+        sendResponse(res, list[listName], 201);
+      });
     },
     DELETE: (req, res) => {
-      console.log('In DELETE');
+      const query = url.parse(req.url, true).query;
+      const { index, listName } = query;
+      list[listName].splice(index, 1);
+      sendResponse(res, list[listName], 202);
     }
   }
 };
