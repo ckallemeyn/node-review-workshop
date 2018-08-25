@@ -20,7 +20,9 @@ class List extends Component {
   fetchTodos() {
     axios
       .get('/api/todoList', { params: { listName: this.state.listName } })
-      .then(({ data }) => this.setState({ todos: data }))
+      .then(({ data }) =>
+        this.setState({ todos: data }, () => console.log(this.state))
+      )
       .catch(err => console.log(err));
   }
 
@@ -56,15 +58,14 @@ class List extends Component {
         </form>
         <br />
         <div>
-          {this.state.todos &&
-            this.state.todos.map((todo, index) => (
-              <ListEntry
-                key={todo}
-                todo={todo}
-                index={index}
-                delete={this.deleteTodo}
-              />
-            ))}
+          {this.state.todos.map((todo, index) => (
+            <ListEntry
+              key={index}
+              todo={todo}
+              index={index}
+              delete={this.deleteTodo}
+            />
+          ))}
         </div>
       </div>
     );
