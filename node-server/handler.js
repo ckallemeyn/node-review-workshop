@@ -53,10 +53,8 @@ const routes = {
     },
     POST: (req, res) => {
       parseData(req, data => {
-        console.log(data);
         const { todo, listName } = data;
         list[listName].push(todo);
-        console.log(list);
         sendResponse(res, list[listName], 201);
       });
     },
