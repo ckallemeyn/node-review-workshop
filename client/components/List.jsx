@@ -61,7 +61,7 @@ class List extends Component {
           {this.state.todos &&
             this.state.todos.map((todo, index) => (
               <ListEntry
-                key={todo}
+                key={index}
                 todo={todo}
                 index={index}
                 delete={this.deleteTodo}
