@@ -44,7 +44,7 @@ class List extends Component {
 
   deleteTodo(todo) {
     axios
-      .delete('/api/todoList', { params: { todo } })
+      .delete('/api/todoList', { params: { listName: this.state.listName } })
       .then(this.fetchTodos())
       .catch(err => console.log(err));
   }
