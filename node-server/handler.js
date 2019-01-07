@@ -43,13 +43,23 @@ const routes = {
   },
   '/api/todoList': {
     GET: (req, res) => {
-      console.log('In GET');
+      let query = url.parse(req.url);
+      console.log('this is the query from the GET request', query);
+
+      sendResponse(res, 'unable to find list', 404);
     },
     POST: (req, res) => {
-      console.log('In POST');
+      parseData(req, (data) => {
+        console.log('this is data from Post:', data);
+        const { todo, listname } = data;
+        list.Todos.push(todo);
+        console.log('list obj', list);
+        sendResponse(res, list[listName], 201);
+      });
     },
     DELETE: (req, res) => {
       console.log('In DELETE');
+      
     }
   }
 };
